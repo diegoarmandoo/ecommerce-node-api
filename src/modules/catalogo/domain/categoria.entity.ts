@@ -1,27 +1,20 @@
-import { ICategoria, CriarCategoriaProps } from "./categoria.types";
+import { ICategoria, CriarCategoriaProps, RecuperarCategoriaProps } from "./categoria.types";
 import { NomeCategoriaNuloOuIndefinido, NomeCategoriaTamanhoMinimoInvalido, NomeCategoriaTamanhoMaximoInvalido } from "./categoria.exception";
+import { randomUUID } from "crypto";
+import { Entity } from "../../../shared/domain/entity";
 
-class Categoria implements ICategoria {
+class Categoria extends Entity<ICategoria> implements ICategoria {
 
     ///////////////////////
 	//Atributos de Classe//
 	///////////////////////
 
-    private _id: string;
 	private _nome: string;
 
     ///////////////
 	//Gets e Sets//
 	///////////////
-
-    public get id(): string {
-        return this._id;
-    }
-
-    private set id(value: string) {
-        this._id = value;
-    }
-
+   
     public get nome(): string {
         return this._nome;
     }
@@ -47,7 +40,7 @@ class Categoria implements ICategoria {
 	//////////////
 
     private constructor(categoria:ICategoria){
-        this.id = categoria.id;
+        super(categoria.id);
         this.nome = categoria.nome;
     }
 
@@ -56,9 +49,12 @@ class Categoria implements ICategoria {
     /////////////////////////
 
     public static criar(props: CriarCategoriaProps): Categoria {
-        let id = "12345"; //Refatorar para gerar id com UUID
         let { nome } = props;
-        return new Categoria({id, nome});
+        return new Categoria({ nome });
+    }
+
+    public static recuperar(props: RecuperarCategoriaProps): Categoria {
+        return new Categoria(props);
     }
 
 }
