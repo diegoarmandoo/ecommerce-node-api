@@ -1,5 +1,4 @@
-import exp from "constants";
-import { DomainException } from "../../../shared/domain/domain.exception";
+import { DomainException } from "../../../../shared/domain/domain.exception";
 
 class CategoriaException extends DomainException {
     constructor(message:string = '⚠️ Exceção de Domínio Genérica da Entidade Categoria') {

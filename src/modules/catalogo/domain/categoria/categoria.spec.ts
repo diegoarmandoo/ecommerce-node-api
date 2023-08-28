@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest';
-import { CriarCategoriaProps, RecuperarCategoriaProps } from './categoria.types';
+import { IDEntityUUIDInvalid } from '../../../../shared/domain/domain.exception';
 import { Categoria } from './categoria.entity';
 import { NomeCategoriaTamanhoMaximoInvalido, NomeCategoriaTamanhoMinimoInvalido } from './categoria.exception';
-import { IDEntityUUIDInvalid } from '../../../shared/domain/domain.exception';
+import { CriarCategoriaProps, RecuperarCategoriaProps } from './categoria.types';
 
 //Suite de Testes de Unidade - Entidade de Domínio
 //Usando a descrição, você pode definir como um conjunto de testes ou benchmarks relacionados
@@ -52,7 +52,7 @@ describe('Entidade de Domínio: Criar Categoria', () => {
 
 });
 
-describe('Entidade de Domínio: Recupear Categoria', () => {
+describe('Entidade de Domínio: Recuperar Categoria', () => {
 
     test('Deve Recuperar Uma Categoria Válida', async () => {
 
