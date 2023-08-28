@@ -1,9 +1,9 @@
+import { faker } from '@faker-js/faker';
 import { beforeAll, describe, expect, test } from "vitest";
 import { Categoria } from "../categoria/categoria.entity";
-import { CriarProdutoProps } from "./produto.types";
 import { Produto } from "./produto.entity";
 import { DescricaoProdutoTamanhoMaximoInvalido, DescricaoProdutoTamanhoMinimoInvalido, NomeProdutoTamanhoMaximoInvalido, NomeProdutoTamanhoMinimoInvalido, QtdMaximaCategoriasProdutoInvalida, QtdMinimaCategoriasProdutoInvalida, ValorMinimoProdutoInvalido } from "./produto.exception";
-import { faker } from '@faker-js/faker';
+import { CriarProdutoProps } from "./produto.types";
 
 let nomeProdutoValido: string;
 let nomeProdutoTamanhoMinInvalido: string;

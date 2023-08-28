@@ -1,4 +1,4 @@
-import { Entity } from "../../../../shared/domain/entity";
+import { Entity } from "@shared/domain/entity";
 import { ProdutoMap } from "../../mappers/produto.map";
 import { Categoria } from "../categoria/categoria.entity";
 import { DescricaoProdutoTamanhoMaximoInvalido, DescricaoProdutoTamanhoMinimoInvalido, NomeProdutoTamanhoMaximoInvalido, NomeProdutoTamanhoMinimoInvalido, QtdMaximaCategoriasProdutoInvalida, QtdMinimaCategoriasProdutoInvalida, ValorMinimoProdutoInvalido } from "./produto.exception";
@@ -119,3 +119,4 @@ class Produto extends Entity<IProduto> implements IProduto {
 }
 
 export { Produto };
+

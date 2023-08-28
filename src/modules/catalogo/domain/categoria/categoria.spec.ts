@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
+import { IDEntityUUIDInvalid } from '@shared/domain/domain.exception';
 import { beforeAll, describe, expect, test } from 'vitest';
-import { IDEntityUUIDInvalid } from '../../../../shared/domain/domain.exception';
 import { Categoria } from './categoria.entity';
 import { NomeCategoriaTamanhoMaximoInvalido, NomeCategoriaTamanhoMinimoInvalido } from './categoria.exception';
 import { CriarCategoriaProps, RecuperarCategoriaProps } from './categoria.types';
