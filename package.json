@@ -4,10 +4,13 @@
   "description": "Este é um projeto acadêmico para prática de desenvolvimento de software mais especificamente a aplicação do paradigma orientado objeto (POO) e seus conceitos, modelagem de domínios ricos, implementação de aplicações WEB e APIs, integração com banco de dados, utilização de testes automatizados, tudo em conformidade com princípios e padrões de arquitetura e projeto além de observância às boas práticas de desenvolvimento. Uso do ambiente de execução node e linguagem de programação TypeScript.",
   "main": "index.js",
   "scripts": {
-    "dev:console":"node -r tsconfig-paths/register -r sucrase/register src/index.ts",
+    "dev:console": "node -r tsconfig-paths/register -r sucrase/register src/index.ts",
     "test": "vitest",
     "test:run": "vitest run",
     "test:ui": "vitest --ui"
+  },
+  "prisma": {
+    "schema": "./src/main/infra/database/orm/prisma/schema.prisma"
   },
   "keywords": [
     "processo de desenvolvimento software",
@@ -30,9 +33,13 @@
     "@faker-js/faker": "^8.0.2",
     "@types/node": "^20.3.3",
     "@vitest/ui": "^0.33.0",
+    "prisma": "^5.3.1",
     "sucrase": "^3.32.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.6",
     "vitest": "^0.33.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.3.1"
   }
 }
