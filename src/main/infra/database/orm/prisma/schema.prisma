@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Categoria {
+  id                String   @id @db.Uuid
+  nome              String   @db.VarChar(50)
+  dataCriacao       DateTime @default(now()) @map("data_criacao")
+  dataAtualizacao   DateTime @updatedAt @map("data_atualizaco")
+  produtos          CategoriasProdutos[]
+
+  @@map("categorias")
+}
+
+model CategoriasProdutos {
+  produto           Produto   @relation(fields: [produtoId], references: [id])
+  produtoId         String    @db.Uuid @map("produto_id")
+  categoria         Categoria @relation(fields: [categoriaId], references: [id])
+  categoriaId       String    @db.Uuid @map("categoria_id")
+  dataCriacao       DateTime  @default(now()) @map("data_criacao")
+  dataAtualizacao   DateTime  @updatedAt @map("data_atualizaco")
+
+  @@id([produtoId, categoriaId])
+  @@map("produtos_categorias")
+}
+
+model Produto {
+  id                String   @id @db.Uuid
+  nome              String   @db.VarChar(50)
+  descricao         String   @db.VarChar(200)
+  valor             Int
+  dataCriacao       DateTime @default(now()) @map("data_criacao")
+  dataAtualizacao   DateTime @updatedAt @map("data_atualizaco")
+  categorias        CategoriasProdutos[]
+
+  @@map("produtos")
+}
