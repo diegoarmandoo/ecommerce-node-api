@@ -15,12 +15,12 @@ model Categoria {
   nome              String   @db.VarChar(50)
   dataCriacao       DateTime @default(now()) @map("data_criacao")
   dataAtualizacao   DateTime @updatedAt @map("data_atualizaco")
-  produtos          CategoriasProdutos[]
+  produtos          ProdutosCategorias[]
 
   @@map("categorias")
 }
 
-model CategoriasProdutos {
+model ProdutosCategorias {
   produto           Produto   @relation(fields: [produtoId], references: [id])
   produtoId         String    @db.Uuid @map("produto_id")
   categoria         Categoria @relation(fields: [categoriaId], references: [id])
@@ -39,7 +39,7 @@ model Produto {
   valor             Int
   dataCriacao       DateTime @default(now()) @map("data_criacao")
   dataAtualizacao   DateTime @updatedAt @map("data_atualizaco")
-  categorias        CategoriasProdutos[]
+  categorias        ProdutosCategorias[]
 
   @@map("produtos")
 }
