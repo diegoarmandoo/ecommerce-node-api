@@ -22,7 +22,7 @@ class CategoriaPrismaRepository extends PrismaRepository implements ICategoriaRe
     async recuperarTodos(): Promise<Array<Categoria>> {
         const categoriasRecuperadas = await this._datasource.categoria.findMany();
         const categorias = categoriasRecuperadas.map(
-            (categoria) => CategoriaMap.fromPrismaModelToDomain(categoriaRecuperada)
+            (categoria) => CategoriaMap.fromPrismaModelToDomain(categoria)
         );
         return categorias;
     }
