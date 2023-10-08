@@ -38,7 +38,8 @@ model Produto {
   descricao         String   @db.VarChar(200)
   valor             Int
   dataCriacao       DateTime @default(now()) @map("data_criacao")
-  dataAtualizacao   DateTime @updatedAt @map("data_atualizaco")
+  dataAtualizacao   DateTime @updatedAt @map("data_atualizacao")
+  dataExclusao      DateTime? @map("data_exclusao")
   categorias        ProdutosCategorias[]
 
   @@map("produtos")
