@@ -25,7 +25,7 @@ async function main() {
     //Recuperar Categoria por UUID//
     ////////////////////////////////
     
-    //const categoriaRecuperada: Categoria | null = await categoriaRepo.recuperarPorUuid("7061d559-ab25-4182-98ce-170afdf2acd2");
+    //const categoriaRecuperada: Categoria | null = await categoriaRepo.recuperarPorUuid('5ccdd6ab-d043-42f0-937b-1260fe47886a');
 
     //console.log(categoriaRecuperada);
 
@@ -50,7 +50,7 @@ async function main() {
     /////////////////////
     
     //const categoria: Categoria = Categoria.criar({
-    //    nome:'Quarto'
+    //    nome:'Cozinha'
     //});     
 
     //const categoriaInserida = await categoriaRepo.inserir(categoria);
@@ -62,11 +62,11 @@ async function main() {
     ///////////////////////
     
     //const categoria: Categoria = Categoria.recuperar({
-    //    id: "96a7f212-e01d-4de7-8abc-70cabbc898fd",
-    //    nome: "Banho"
+    //    id: "5ccdd6ab-d043-42f0-937b-1260fe47886a",
+    //    nome: "Cozinha Americana"
     //});     
 
-    //const atualizouCategoria: boolean = await categoriaRepo.atualizar(categoria.id,categoria);
+   //const atualizouCategoria: boolean = await categoriaRepo.atualizar(categoria.id,categoria);
 
     //console.log(atualizouCategoria)
 
@@ -74,7 +74,7 @@ async function main() {
     //Deletar Categoria//
     /////////////////////
     
-    //const categoriaDeletada: boolean = await categoriaRepo.deletar("120a3d76-9ca6-4880-a1d6-d34685e1f6f8");
+    //const categoriaDeletada: boolean = await categoriaRepo.deletar('5ccdd6ab-d043-42f0-937b-1260fe47886a');
     
     //console.log(categoriaDeletada);
 
@@ -82,9 +82,11 @@ async function main() {
 	//Recuperar Produto por UUID//
 	////////////////////////////////
 		
-	//const produtoRecuperado: Produto | null = await produtoRepo.recuperarPorUuid("f01dbd3a-d8ac-4f66-80bf-c04e56e3ef56");
+	//const produtoRecuperado: Produto | null = await produtoRepo.recuperarPorUuid("7f35c7f4-ce26-4503-bfce-0afd937adfb8");
 
 	//console.log(produtoRecuperado);
+
+    //console.log(produtoRecuperado?.estaDeletado());
 
     ///////////////////
 	//Inserir Produto//
@@ -102,7 +104,7 @@ async function main() {
     })
 
     const produto: Produto = Produto.criar({
-        nome:'Toalha de Mesa',
+        nome:'Toalha de Cozinha',
         descricao:'toalha de algodão',
         valor:85,
         categorias:[categoria01, categoria02]
@@ -113,15 +115,14 @@ async function main() {
 	console.log(produtoInserido);
 
     */
-    
-    
+
     /////////////////////////////////////////////////
 	//Recuperar Todos os Produtos e Suas Categorias//
 	/////////////////////////////////////////////////
 		
-	const todosProdutos: Array<Produto> = await produtoRepo.recuperarTodos();
+	//const todosProdutos: Array<Produto> = await produtoRepo.recuperarTodos();
 
-	console.log(todosProdutos);
+	//console.log(todosProdutos);
 
     ///////////////////////////////////////////////
 	//Atualizar Produto - Sem Atulizar Categorias//
@@ -129,20 +130,20 @@ async function main() {
 
     /*
     const produto = {
-        id: "f01dbd3a-d8ac-4f66-80bf-c04e56e3ef56",
-        nome: "Toalha de Mesa Grande",
+        id: "7d6a14d5-02f3-4b6d-8cb8-8601ff151f10",
+        nome: "Toalha de Cozinha",
         descricao: "toalha de algodão",
-        valor: 85
+        valor: 200
     }; 
 
     const atualizouProduto: boolean = await produtoRepo.atualizar(produto.id,produto);
+    
     */
-
     ///////////////////
 	//Deletar Produto//
 	///////////////////
 		
-	//const produtoDeletado: boolean = await produtoRepo.deletar("83d2e682-1f02-4556-867f-4de075cd3cb8");
+	//const produtoDeletado: boolean = await produtoRepo.deletar("7d6a14d5-02f3-4b6d-8cb8-8601ff151f10");
 
 	//console.log(produtoDeletado);
 
