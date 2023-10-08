@@ -10,7 +10,9 @@ class Categoria extends Entity<ICategoria> implements ICategoria {
 	///////////////////////
 
 	private _nome: string;
-
+    private _dataCriacao?: Date | undefined;
+	private _dataAtualizacao?: Date | undefined;
+    
     ///////////////
 	//Gets e Sets//
 	///////////////
@@ -35,6 +37,22 @@ class Categoria extends Entity<ICategoria> implements ICategoria {
         this._nome = value;
     }
 
+    public get dataCriacao(): Date | undefined {
+        return this._dataCriacao;
+    }
+
+    private set dataCriacao(value: Date | undefined) {
+        this._dataCriacao = value;
+    }
+
+    public get dataAtualizacao(): Date | undefined {
+        return this._dataAtualizacao;
+    }
+
+    private set dataAtualizacao(value: Date | undefined) {
+        this._dataAtualizacao = value;
+    }
+
     //////////////
 	//Construtor//
 	//////////////
@@ -42,6 +60,8 @@ class Categoria extends Entity<ICategoria> implements ICategoria {
     private constructor(categoria:ICategoria){
         super(categoria.id);
         this.nome = categoria.nome;
+        this.dataCriacao = categoria.dataCriacao;
+        this.dataAtualizacao = categoria.dataAtualizacao;
     }
 
     /////////////////////////
@@ -49,8 +69,7 @@ class Categoria extends Entity<ICategoria> implements ICategoria {
     /////////////////////////
 
     public static criar(props: CriarCategoriaProps): Categoria {
-        let { nome } = props;
-        return new Categoria({ nome });
+        return new Categoria(props);
     }
 
     public static recuperar(props: RecuperarCategoriaProps): Categoria {
