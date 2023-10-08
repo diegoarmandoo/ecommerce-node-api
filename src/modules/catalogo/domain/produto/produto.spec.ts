@@ -32,7 +32,7 @@ beforeAll(async () => {
 
     //Preencendo as variáveis com dados em conformidade com as restrições da regra de negócio para o valor do produto
 	valorProdutoValido = faker.number.int({min:1,max:2000 });
-	valorMinProdutoInvalido = faker.number.int({min:-10,max: 0});
+	valorMinProdutoInvalido = faker.number.int({min:-10,max: -1});
 
     //Preencendo um array de categorias válido com dados simulados
     const categoriaValida01 = Categoria.criar({nome:faker.string.alpha({length:{min:3,max:50}})});
