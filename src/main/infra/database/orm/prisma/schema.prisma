@@ -40,7 +40,13 @@ model Produto {
   dataCriacao       DateTime @default(now()) @map("data_criacao")
   dataAtualizacao   DateTime @updatedAt @map("data_atualizacao")
   dataExclusao      DateTime? @map("data_exclusao")
+  status            StatusProdutoPrisma @default(ATIVO) @map("status_produto")
   categorias        ProdutosCategorias[]
 
   @@map("produtos")
+}
+
+enum StatusProdutoPrisma {
+  ATIVO
+  DESATIVO
 }
