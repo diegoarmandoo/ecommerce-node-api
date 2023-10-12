@@ -15,6 +15,13 @@
             "preLaunchTask": "tsc: build - tsconfig.json",
             "outFiles": [
                 "${workspaceFolder}/dist/**/*.js"
+            ],
+            "runtimeArgs": [
+                "-r",
+                "tsconfig-paths/register",
+                "-r",
+                "sucrase/register",
+                "src"
             ]
         }
     ]
