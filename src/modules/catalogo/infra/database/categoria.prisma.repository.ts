@@ -1,6 +1,6 @@
 import { Categoria } from "@modules/catalogo/domain/categoria/categoria.entity";
 import { ICategoriaRepository } from "@modules/catalogo/domain/categoria/categoria.repository.interface";
-import { CategoriaMap } from "@modules/catalogo/mappers/categoria.map";
+import { CategoriaMap } from "@modules/catalogo/infra/mappers/categoria.map";
 import { PrismaRepository } from "@shared/infra/database/prisma.repository";
 
 class CategoriaPrismaRepository extends PrismaRepository implements ICategoriaRepository<Categoria> {

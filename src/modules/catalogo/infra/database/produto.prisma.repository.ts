@@ -2,7 +2,7 @@ import { Categoria } from "@modules/catalogo/domain/categoria/categoria.entity";
 import { Produto } from "@modules/catalogo/domain/produto/produto.entity";
 import { IProdutoRepository } from "@modules/catalogo/domain/produto/produto.repository.interface";
 import { StatusProduto } from "@modules/catalogo/domain/produto/produto.types";
-import { ProdutoMap } from "@modules/catalogo/mappers/produto.map";
+import { ProdutoMap } from "@modules/catalogo/infra/mappers/produto.map";
 import { Prisma } from "@prisma/client";
 import { PrismaRepository } from "@shared/infra/database/prisma.repository";
 import { produtoIncludeCategoriaPrisma } from "@shared/infra/database/prisma.types";
