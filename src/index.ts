@@ -7,6 +7,7 @@ import { DomainException } from '@shared/domain/domain.exception';
 import { prisma } from '@main/infra/database/orm/prisma/client';
 import { categoriaRepositorio as categoriaRepo } from '@modules/catalogo/infra/database';
 import { produtoRepositorio as produtoRepo } from '@modules/catalogo/infra/database';
+import { atualizarCategoriaUseCase, deletarCategoriaUseCase, inserirCategoriaUseCase, recuperarCategoriaPorIdUseCase, recuperarProdutoPorIdUseCase, recuperarTodasCategoriasUseCase } from '@modules/catalogo/application/use-cases';
 
 
 async function main() {
@@ -21,17 +22,13 @@ async function main() {
     //Recuperar Categoria por UUID//
     ////////////////////////////////
     
-    //const categoriaRecuperada: Categoria | null = await categoriaRepo.recuperarPorUuid('5ccdd6ab-d043-42f0-937b-1260fe47886a');
-
-    //console.log(categoriaRecuperada);
+    //console.log(await recuperarCategoriaPorIdUseCase.execute("80830927-8c3e-4db9-9ddf-30ea191f139b"));
 
     /////////////////////////////////
     //Recuperar Todas as Categorias//
     /////////////////////////////////
     
-    //const todasCategorias: Array<Categoria> = await categoriaRepo.recuperarTodos();
-
-    //console.log(todasCategorias);
+    //console.log(await recuperarTodasCategoriasUseCase.execute());
 
     ////////////////////////////////
     //Verifica se Existe Categoria//
@@ -45,44 +42,32 @@ async function main() {
     //Inserir Categoria//
     /////////////////////
     
-    //const categoria: Categoria = Categoria.criar({
-    //    nome:'Cozinha'
-    //});     
-
-    //const categoriaInserida = await categoriaRepo.inserir(categoria);
-
-    //console.log(categoriaInserida);
+    //console.log(await inserirCategoriaUseCase.execute({nome:'Cozinha Francesa'}));  
 
     ///////////////////////
     //Atualizar Categoria//
     ///////////////////////
     
-    //const categoria: Categoria = Categoria.recuperar({
-    //    id: "5ccdd6ab-d043-42f0-937b-1260fe47886a",
-    //    nome: "Cozinha Americana"
-    //});     
-
-   //const atualizouCategoria: boolean = await categoriaRepo.atualizar(categoria.id,categoria);
-
-    //console.log(atualizouCategoria)
+    /*
+    console.log(
+        await atualizarCategoriaUseCase.execute({
+            id: "3ef71a0e-752a-4d0e-9dc5-cb40eeb55e21",
+            nome: "Co"
+        })
+    );
+    */
 
     /////////////////////
     //Deletar Categoria//
     /////////////////////
     
-    //const categoriaDeletada: boolean = await categoriaRepo.deletar('5ccdd6ab-d043-42f0-937b-1260fe47886a');
-    
-    //console.log(categoriaDeletada);
+    //console.log(await deletarCategoriaUseCase.execute("1f2c7f0d-d074-46f6-b835-ec1fed480363"));
 
     ////////////////////////////////
 	//Recuperar Produto por UUID//
 	////////////////////////////////
 		
-	//const produtoRecuperado: Produto | null = await produtoRepo.recuperarPorUuid("7f35c7f4-ce26-4503-bfce-0afd937adfb8");
-
-	//console.log(produtoRecuperado);
-
-    //console.log(produtoRecuperado?.estaDeletado());
+	console.log(await recuperarProdutoPorIdUseCase.execute("738f111b-eba1-457f-9552-5b5f28511d5d"));
 
     ///////////////////
 	//Inserir Produto//
@@ -117,9 +102,9 @@ async function main() {
 	//Recuperar Todos os Produtos e Suas Categorias//
 	/////////////////////////////////////////////////
 		
-	const todosProdutos: Array<Produto> = await produtoRepo.recuperarTodos();
+	//const todosProdutos: Array<Produto> = await produtoRepo.recuperarTodos();
 
-	console.log(todosProdutos);
+	//console.log(todosProdutos);
 
     ///////////////////////////////////////////////
 	//Atualizar Produto - Sem Atulizar Categorias//
