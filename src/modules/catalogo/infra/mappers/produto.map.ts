@@ -13,7 +13,7 @@ class ProdutoMap {
           nome: produto.nome,
           descricao: produto.descricao,
           valor: produto.valor,
-          categorias: produto.categorias,
+          categorias:  produto.categorias.map((categoria) => { return CategoriaMap.toDTO(categoria)}),
           dataCriacao: produto.dataCriacao,
           dataAtualizacao: produto.dataAtualizacao,
           dataExclusao: produto.dataExclusao,
