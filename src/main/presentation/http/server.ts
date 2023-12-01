@@ -1,13 +1,16 @@
 import http from 'node:http';
+import express, { Application } from 'express';
+import morgan from 'morgan';
+import { apiv1Router } from './rest/api.v1';
+
+const app: Application = express();
 
 const createHTTPServer = async (): Promise<http.Server>  => {
-    const httpServer: http.Server = http.createServer(
-        function (request, response) {
-            response.writeHead(200, {'Content-Type': 'text/html'});
-            response.write('<html><body><p>Hello, Servidor Web com Node.js</p></body></html>');
-            response.end();
-        }
-    );
+    app.disabled('x-powered-by');
+    app.use(express.json());
+    app.use(morgan('tiny'));
+    app.use('/api/v1', apiv1Router);
+    const httpServer: http.Server = http.createServer(app);
     return httpServer;
 };
 
