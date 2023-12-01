@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { createHTTPServer } from './presentation/http/server';
+import { prisma } from '@main/infra/database/orm/prisma/client';
 
 async function bootstrap() {
 
@@ -17,6 +18,12 @@ async function bootstrap() {
     httpServer.listen({ port: port }, async () => {
         console.log(`[${api_name}] ✅ Servidor HTTP pronto e ouvindo em http://${host_name}:${port}`);
     });
+
+    prisma.$connect().then(
+        async () => {
+            console.log(`[${api_name}] ✅ Banco de dados conectado`);
+        }
+    );
 
 }
 
