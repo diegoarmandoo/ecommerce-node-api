@@ -3,31 +3,32 @@ import { createHTTPServer } from './presentation/http/server';
 import { prisma } from '@main/infra/database/orm/prisma/client';
 import { Application } from 'express';
 import { createExpressApplication } from './presentation/http/app.express';
+import { logger } from '@shared/helpers/logger.winston';
 
 async function bootstrap() {
 
+    logger.info(`Inicializando a API....🚀`);
+
     //Carrega variáveis de ambiente do arquivo .env
 	dotenv.config();
-
     const api_name = process.env.API_NAME;
     const host_name = process.env.HOST_NAME;
     const port = process.env.PORT;
-
-    console.log(`[${api_name}] 🚀 Inicializando a API....`);
+    logger.ok(`Carregando variáveis de ambiente do arquivo .env`);
 
     const app: Application = await createExpressApplication();
-    console.log(`[${api_name}] Aplicação Express Instanciada e Configurada`);
+    logger.ok(`Aplicação Express Instanciada e Configurada`);
 
     const httpServer = await createHTTPServer(app);
-    console.log(`[${api_name}] Servidor HTTP foi Instanciado e Configurado`);
+    logger.ok('Servidor HTTP Instanciado e Configurado');
 
     httpServer.listen({ port: port }, async () => {
-        console.log(`[${api_name}] ✅ Servidor HTTP pronto e ouvindo em http://${host_name}:${port}`);
+        logger.ok(`Servidor HTTP Pronto e Ouvindo em http://${host_name}:${port}`);
     });
 
     prisma.$connect().then(
         async () => {
-            console.log(`[${api_name}] ✅ Banco de dados conectado`);
+            logger.ok(`Banco de Dados Conectado`);
         }
     );
 
@@ -35,5 +36,5 @@ async function bootstrap() {
 
 bootstrap()
     .catch((error) => {
-        console.error(error);
+        logger.error(error.message);
     });

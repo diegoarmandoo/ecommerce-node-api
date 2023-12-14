@@ -3,6 +3,8 @@ import { apiv1Router } from "./rest/api.v1";
 import morgan from "morgan";
 import helmet from "helmet";
 import compression from "compression";
+import { customMorgan } from "./middlewares/custom-morgan.middleware";
+import { logger } from "@shared/helpers/logger.winston";
 
 const createExpressApplication = async (): Promise<Application>  => {
     const app: Application = express();
@@ -14,10 +16,10 @@ const createExpressApplication = async (): Promise<Application>  => {
 
     //Middlewares de Terceiros
     app.use(helmet());
-    app.use(compression);
-    app.use(morgan('tiny'));
-
+    app.use(compression());
+    
     //Middleware Customizados
+    app.use(customMorgan);
 
     //Middlewares de Rotas
     app.use('/api/v1', apiv1Router);
