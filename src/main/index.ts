@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import { createHTTPServer } from './presentation/http/server';
 import { prisma } from '@main/infra/database/orm/prisma/client';
+import { Application } from 'express';
+import { createExpressApplication } from './presentation/http/app.express';
 
 async function bootstrap() {
 
@@ -13,7 +15,11 @@ async function bootstrap() {
 
     console.log(`[${api_name}] 🚀 Inicializando a API....`);
 
-    const httpServer = await createHTTPServer();
+    const app: Application = await createExpressApplication();
+    console.log(`[${api_name}] Aplicação Express Instanciada e Configurada`);
+
+    const httpServer = await createHTTPServer(app);
+    console.log(`[${api_name}] Servidor HTTP foi Instanciado e Configurado`);
 
     httpServer.listen({ port: port }, async () => {
         console.log(`[${api_name}] ✅ Servidor HTTP pronto e ouvindo em http://${host_name}:${port}`);
