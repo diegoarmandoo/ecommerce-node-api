@@ -1,5 +1,6 @@
 import express from 'express';
 import { atualizarCategoriaController, deletarCategoriaController, inserirCategoriaController, recuperarCategoriaPorIdController, recuperarTodasCategoriasController } from './controllers';
+import { contentType } from '@main/presentation/http/middlewares/content-type.middleware';
 
 const categoriaRouter = express.Router();
 
@@ -15,11 +16,13 @@ categoriaRouter.get(
 
 categoriaRouter.post(
     '/',
+    contentType,
     (request, response, next) =>  inserirCategoriaController.inserir(request, response, next)
 )
 
 categoriaRouter.put(
     '/:id',
+    contentType,
     (request, response, next) =>  atualizarCategoriaController.atualizar(request, response, next)
 )
 
