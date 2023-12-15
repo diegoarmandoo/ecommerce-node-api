@@ -5,6 +5,9 @@ import helmet from "helmet";
 import compression from "compression";
 import { customMorgan } from "./middlewares/custom-morgan.middleware";
 import { logger } from "@shared/helpers/logger.winston";
+import { errorLogger } from "./middlewares/error-logger.middleware";
+import { errorResponder } from "./middlewares/error-responser.middleware";
+import { invalidPath } from "./middlewares/invalid-path.middleware";
 
 const createExpressApplication = async (): Promise<Application>  => {
     const app: Application = express();
@@ -25,6 +28,9 @@ const createExpressApplication = async (): Promise<Application>  => {
     app.use('/api/v1', apiv1Router);
 
     //Middleware de Tratamento de Erros (Error Handling)
+    app.use(invalidPath);
+    app.use(errorLogger);
+    app.use(errorResponder);
 
     return app;
 }

@@ -5,6 +5,7 @@ import { MockProxy, mock, mockReset } from "vitest-mock-extended";
 import { RecuperarCategoriaPorIdExpressController } from "./recuperar-categoria-por-id.express.controller";
 import { ICategoria } from "@modules/catalogo/domain/categoria/categoria.types";
 import { CategoriaApplicationExceptions } from "@modules/catalogo/application/exceptions/categoria.application.exception";
+import { HttpError, HttpErrors } from "@shared/presentation/http/http.error";
 
 
 let requestMock: MockProxy<Request>;
@@ -70,7 +71,7 @@ describe('Controller Express: Recuperar Categoria por ID', () => {
 
         expect(recuperarCategoriaPorIdUseCaseMock.execute).toHaveBeenCalledWith(categoriaInputDTO.id);
         expect(nextMock).toHaveBeenCalled();
-        expect(nextMock.mock.lastCall[0].name).toBe(CategoriaApplicationExceptions.CategoriaNaoEncontrada.name);
+        expect(nextMock.mock.lastCall[0].name).toBe(HttpErrors.NotFoundError.name);
 
     });
 
