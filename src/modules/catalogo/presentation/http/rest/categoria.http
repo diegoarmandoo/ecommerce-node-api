@@ -13,11 +13,11 @@ POST http://{{host}}:{{port}}/{{apiversion}}/categorias
 Content-type: application/json
 
 {
-    "nome":"Sala de Televisão"
+    "nome":"Sala"
 }
 
 ### Atualizar Categoria
-PUT http://{{host}}:{{port}}/{{apiversion}}/categorias/ac6c99e0-0759-47c1-89cb-5c6dc6e64852
+PUT http://{{host}}:{{port}}/{{apiversion}}/categorias/ac6c99e0-0759-47c1-89cb-5c6dc6e64853
 Content-type: application/json 
 
 {
@@ -26,4 +26,4 @@ Content-type: application/json
 }
 
 ### Deletar Categoria
-DELETE http://{{host}}:{{port}}/{{apiversion}}/categorias/ac6c99e0-0759-47c1-89cb-5c6dc6e64852
+DELETE http://{{host}}:{{port}}/{{apiversion}}/categorias/ac6c99e0-0759-47c1-89cb-5c6dc6e64853

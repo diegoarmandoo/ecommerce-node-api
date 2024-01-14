@@ -28,9 +28,18 @@ class UnsupportedMediaTypeError extends HttpError {
     }
 }
 
+class BadRequestError extends HttpError {
+    constructor( params?: {statusCode?: number, message?: string}) {
+        const { statusCode, message} = params || {};
+        super(statusCode || 400, message || '⚠️ Servidor Não Pode ou Não Irá Processar a Requisição Devido a Algum Erro do Cliente (ex.: sintaxe de requisição mal formada, enquadramento de mensagem de requisição inválida ou requisição de roteamento enganosa.');
+        this.name = 'BadRequestError';
+    }
+}
+
 const HttpErrors = {
     NotFoundError: NotFoundError,
-    UnsupportedMediaTypeError: UnsupportedMediaTypeError
+    UnsupportedMediaTypeError: UnsupportedMediaTypeError,
+    BadRequestError: BadRequestError
 }
 
 export { HttpError, HttpErrors }
